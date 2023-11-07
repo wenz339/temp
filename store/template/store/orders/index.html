@@ -1,0 +1,41 @@
+{% extends "store/template/store/layouts/main.html" %}
+
+{% block content %}
+    <div class="py-3 bg-primary">
+        <div class="container">
+            <a class="text-white" href="{% url "home" %}">Home / </a>
+            <a class="text-white" href="{% url "myorders" %}">My History </a>
+        </div>
+    </div>
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h3 >History </h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table rable-bordered">
+                            <thead>
+                                <tr>
+                                    <th> History Date </th>
+                                    <th> Redeem Code</th>
+                                    <th> Total Price </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                    <tr>
+                                        <td>{{ order.created_at }}</td>
+                                        <td>{{ order.redeem_code }}</td>
+                                        <td>{{ order.total_price }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
